@@ -1,12 +1,73 @@
 #include "icarus.dtsi"
 
+&default_transform {
+    col-offset = <0>;
+};
+
 &kscan0 {
-  status = "okay";
-  col-gpios
-    = <&pro_micro 10 GPIO_ACTIVE_HIGH>
-    , <&pro_micro 16 GPIO_ACTIVE_HIGH>
-    , <&pro_micro 14 GPIO_ACTIVE_HIGH>
-    , <&pro_micro 19 GPIO_ACTIVE_HIGH>
-    , <&pro_micro 20 GPIO_ACTIVE_HIGH>
-    ;
+    status = "okay";
+    col-gpios
+        = <&pro_micro 5 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 6 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 7 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 8 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 9 GPIO_ACTIVE_HIGH>
+        ;
+};
+
+// Rotary Encoder
+/ {
+    left_encoder: encoder_left {
+        compatible = "alps,ec11";
+        label = "LEFT_ENCODER";
+        resolution = <4>;
+        a-gpios = <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    };
+
+    // Encoder Button
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder>;
+    };
+};
+
+// GPIO Keys for Encoder Button
+/ {
+    encoder_button {
+        compatible = "gpio-keys";
+        encoder_sw: encoder_sw {
+            gpios = <&pro_micro 16 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+            label = "ENCODER_SW";
+        };
+    };
+};
+
+// I2C for OLED Display
+&pro_micro_i2c {
+    status = "okay";
+    clock-frequency = <100000>;
+    
+    oled: ssd1306@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;
+        label = "DISPLAY";
+        width = <128>;
+        height = <32>;
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <31>;
+        segment-remap;
+        com-invdir;
+        prechargep = <0x22>;
+    };
+};
+
+&pro_micro {
+    pro_micro_i2c: &i2c0 {
+        compatible = "nordic,nrf-twi";
+        sda-pin = <17>;
+        scl-pin = <18>;
+    };
 };

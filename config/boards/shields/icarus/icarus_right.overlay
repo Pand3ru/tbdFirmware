@@ -1,15 +1,44 @@
 #include "icarus.dtsi"
 
-&default_transform { 
+&default_transform {
     col-offset = <5>;
 };
 
 &kscan0 {
-  col-gpios
-    = <&pro_micro 20 GPIO_ACTIVE_HIGH>
-    , <&pro_micro 19 GPIO_ACTIVE_HIGH>
-    , <&pro_micro 14 GPIO_ACTIVE_HIGH>
-    , <&pro_micro 16 GPIO_ACTIVE_HIGH>
-    , <&pro_micro 10 GPIO_ACTIVE_HIGH>
-    ;
+    status = "okay";
+    col-gpios
+        = <&pro_micro 5 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 6 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 7 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 8 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 9 GPIO_ACTIVE_HIGH>
+        ;
+};
+
+// Rotary Encoder
+/ {
+    right_encoder: encoder_right {
+        compatible = "alps,ec11";
+        label = "RIGHT_ENCODER";
+        resolution = <4>;
+        a-gpios = <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    };
+
+    // Encoder Sensor
+    sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&right_encoder>;
+    };
+};
+
+// GPIO Keys for Encoder Button
+/ {
+    right_encoder_button {
+        compatible = "gpio-keys";
+        right_encoder_sw: right_encoder_sw {
+            gpios = <&pro_micro 16 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+            label = "RIGHT_ENCODER_SW";
+        };
+    };
 };

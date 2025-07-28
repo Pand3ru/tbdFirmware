@@ -2,12 +2,56 @@ if SHIELD_ICARUS_LEFT
 
 config ZMK_KEYBOARD_NAME
   default "Icarus"
+
 config ZMK_SPLIT_ROLE_CENTRAL
   default y
+
+# OLED Display 
+config ZMK_DISPLAY
+  default y
+
+config ZMK_WIDGET_LAYER_STATUS
+  default y
+
+config ZMK_WIDGET_BATTERY_STATUS
+  default y
+
+config ZMK_WIDGET_OUTPUT_STATUS
+  default y
+
+# I2C for OLED
+config I2C
+  default y
+
+# SSD1306 Display Driver
+config SSD1306
+  default y
+
+config LVGL_USE_MONOSPACE_FONT
+  default y
+
+# Rotary Encoder
+config EC11
+  default y
+
+config EC11_TRIGGER_GLOBAL_THREAD
+  default y
+
+endif
+
+if SHIELD_ICARUS_RIGHT
+
+config EC11
+  default y
+
+config EC11_TRIGGER_GLOBAL_THREAD
+  default y
+
 endif
 
 if SHIELD_ICARUS_LEFT || SHIELD_ICARUS_RIGHT
 
 config ZMK_SPLIT
   default y
+
 endif
