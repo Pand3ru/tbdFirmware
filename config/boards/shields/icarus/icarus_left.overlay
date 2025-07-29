@@ -15,7 +15,7 @@
         ;
 };
 
-// Rotary Encoder
+// Linker Rotary Encoder
 / {
     left_encoder: encoder_left {
         compatible = "alps,ec11";
@@ -25,28 +25,18 @@
         b-gpios = <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
     };
 
-    // Encoder Button
     sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder>;
     };
 };
 
-// GPIO Keys for Encoder Button
-/ {
-    encoder_button {
-        compatible = "gpio-keys";
-        encoder_sw: encoder_sw {
-            gpios = <&pro_micro 16 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-            label = "ENCODER_SW";
-        };
-    };
-};
-
-// I2C for OLED Display
-&pro_micro_i2c {
+// I2C für OLED Display (vereinfacht)
+&i2c0 {
     status = "okay";
     clock-frequency = <100000>;
+    sda-pin = <17>;
+    scl-pin = <18>;
     
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
@@ -61,13 +51,5 @@
         segment-remap;
         com-invdir;
         prechargep = <0x22>;
-    };
-};
-
-&pro_micro {
-    pro_micro_i2c: &i2c0 {
-        compatible = "nordic,nrf-twi";
-        sda-pin = <17>;
-        scl-pin = <18>;
     };
 };
