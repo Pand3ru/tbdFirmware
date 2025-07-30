@@ -27,9 +27,6 @@ config I2C
 config SSD1306
   default y
 
-config LVGL_USE_MONOSPACE_FONT
-  default y
-
 endif
 
 if SHIELD_ICARUS_LEFT || SHIELD_ICARUS_RIGHT
