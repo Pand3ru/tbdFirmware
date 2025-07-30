@@ -15,22 +15,6 @@
         ;
 };
 
-// Linker Rotary Encoder
-/ {
-    left_encoder: encoder_left {
-        compatible = "alps,ec11";
-        a-gpios = <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&pro_micro 15 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        steps = <80>;
-        #sensor-binding-cells = <0>;
-    };
-    sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&left_encoder>;
-        triggers-per-rotation = <20>;
-    };
-};
-
 // I2C für OLED Display (korrekte pinctrl Syntax)
 &pinctrl {
     i2c0_default: i2c0_default {

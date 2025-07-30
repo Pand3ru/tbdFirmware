@@ -30,23 +30,6 @@ config SSD1306
 config LVGL_USE_MONOSPACE_FONT
   default y
 
-# Rotary Encoder
-config EC11
-  default y
-
-config EC11_TRIGGER_GLOBAL_THREAD
-  default y
-
-endif
-
-if SHIELD_ICARUS_RIGHT
-
-config EC11
-  default y
-
-config EC11_TRIGGER_GLOBAL_THREAD
-  default y
-
 endif
 
 if SHIELD_ICARUS_LEFT || SHIELD_ICARUS_RIGHT

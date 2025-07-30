@@ -31,19 +31,6 @@
       layers = <BASE>;
       bindings = <&kp ESC>; 
     };
-    
-    // Encoder Button Combos
-    combo_mute {
-      timeout-ms = <50>;
-      key-positions = <30>; // Linker Encoder Button
-      bindings = <&kp C_MUTE>;
-    };
-    
-    combo_playpause {
-      timeout-ms = <50>;
-      key-positions = <31>; // Rechter Encoder Button
-      bindings = <&kp C_PP>;
-    };
   };
 
   behaviors {
@@ -67,9 +54,6 @@
         &kp Y &kp X &kp C &kp V &kp B                    &kp N &kp M &kp COMMA &kp PERIOD &kp SLASH 
               &mo SYM &kp SPACE &kp LEFT_SHIFT           &kp LEFT_SHIFT &mo SYM2 &mo SYM3 
       >;
-      
-      // Links: Volume, Rechts: Zoom
-      sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp LC(EQUAL) LC(MINUS)>;
     };
     
     sym_layer {
@@ -79,9 +63,6 @@
         &kp LEFT_SHIFT &none &none &none &none          &kp MINUS &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp EXCLAMATION &kp SINGLE_QUOTE 
                 &none &none &none                        &kp LEFT_SHIFT &none &none 
       >;
-      
-      // Links: Volume, Rechts: Scrollen
-      sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
     };
     
     sym2_layer {
@@ -91,9 +72,6 @@
         &none &none &none &none &none                   &none &kp K_VOLUME_UP2 &kp K_VOLUME_DOWN2 &none &kp LEFT_SHIFT 
               &none &none &none                          &none &none &none 
       >;
-      
-      // Links: Volume, Rechts: Brightness
-      sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_BRI_UP C_BRI_DN>;
     };
     
     sym3_layer {
@@ -104,8 +82,6 @@
                      &none &none &none                         &none &none &none 
       >;
       
-      // Links: Volume, Rechts: Bluetooth-Geräte wechseln
-      sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp BT_NXT BT_PRV>;
     };
   };
 };
