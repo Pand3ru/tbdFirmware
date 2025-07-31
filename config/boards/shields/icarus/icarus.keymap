@@ -52,7 +52,8 @@
         &kp Q &kp W &kp E &kp R &kp T                    &kp Z &kp U &kp I &kp O &kp P 
         &kp A &hm LCTRL S &hm LGUI D &hm LALT F &kp G    &kp H &lt SYM3 J &kp K &kp L &kp SEMICOLON 
         &kp Y &kp X &kp C &kp V &kp B                    &kp N &kp M &kp COMMA &kp PERIOD &kp SLASH 
-              &mo SYM &kp SPACE &kp LEFT_SHIFT           &kp LEFT_SHIFT &mo SYM2 &mo SYM3 
+              //&mo SYM &kp SPACE &kp LEFT_SHIFT           &kp LEFT_SHIFT &mo SYM2 &mo SYM3 
+              &kp A &kp B &kp C           &kp LEFT_SHIFT &mo SYM2 &mo SYM3 
       >;
     };
     
