@@ -1,9 +1,18 @@
-/ {
+#include <dt-bindings/zmk/matrix_transform.h>
 
-  sensors {
-    compatible = "zmk,keymap-sensors";
-    sensors = <&left_encoder &right_encoder>;
-  };
+/ {
+    chosen {
+		zephyr,display = &oled;
+		zmk,kscan = &kscan0;
+		zmk,matrix_transform = &default_transform;
+	};
+
+    kscan0: kscan {
+       compatible = "zmk,kscan-gpio-matrix";
+       wakeup-source;
+       diode-direction = "col2row";
+    };
+
 
   left_encoder: encoder_left {
     compatible = "alps,ec11";
@@ -17,6 +26,12 @@
     label = "RIGHT_ENCODER";
     steps = <80>;
     status = "disabled";  
+  };
+
+    sensors {
+      compatible = "zmk,keymap-sensors";
+      sensors = <&left_encoder &right_encoder>;
+    };
   };
 
   &pro_micro_i2c {
