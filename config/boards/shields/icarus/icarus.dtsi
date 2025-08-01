@@ -1,7 +1,9 @@
 #include <dt-bindings/zmk/matrix_transform.h>
+#include "tbd_common.dtsi"
 
 / {
   chosen {
+    zephyr,display = &oled;
     zmk,kscan = &kscan0;
     zmk,matrix_transform = &default_transform;
   };
@@ -30,23 +32,13 @@
       ;
   };
 
-  sensors {
-    compatible = "zmk,keymap-sensors";
-    sensors = <&left_encoder &right_encoder>;
-    triggers-per-rotation = <20>;
+  &left_encoder {
+    a-gpios = <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    b-gpios = <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
   };
 
-  left_encoder: encoder_left {
-    compatible = "alps,ec11";
-    label = "LEFT_ENCODER";
-    steps = <20>;
-    status = "disabled";  
-  };
-
-  right_encoder: encoder_right {
-    compatible = "alps,ec11";
-    label = "RIGHT_ENCODER";
-    steps = <20>;
-    status = "disabled";  
+  &right_encoder {
+    a-gpios = <&pro_micro 16 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+    b-gpios = <&pro_micro 14 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
   };
 };
