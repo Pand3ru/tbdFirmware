@@ -15,6 +15,10 @@
         ;
 };
 
+&i2c0 {
+    status = "disabled";
+};
+
 &left_encoder {
     status = "disabled";
 };
