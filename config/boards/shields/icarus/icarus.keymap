@@ -89,4 +89,15 @@
       
     };
   };
+  encoders {
+    compatible = "zmk,encoders";
+    
+    encoder_left: left_encoder {
+      bindings = <&inc_dec_kp PG_UP PG_DN>;
+    };
+    
+    encoder_right: right_encoder {
+      bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+    };
+  };
 };
