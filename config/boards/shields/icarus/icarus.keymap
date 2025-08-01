@@ -54,7 +54,8 @@
         &kp Y &kp X &kp C &kp V &kp B                    &kp N &kp M &kp COMMA &kp PERIOD &kp SLASH 
               &mo SYM &kp SPACE &kp LEFT_SHIFT           &kp LEFT_SHIFT &mo SYM2 &mo SYM3 
       >;
-      sensor-bindings = 
+
+      sensor-bindings = <
                 &inc_dec_kp C_VOL_UP C_VOL_DN    
                 &inc_dec_kp PG_UP PG_DN         
             >;
