@@ -42,7 +42,7 @@
         com-sequential;
         prechargep = <0x22>;
     };
-}
+};
 
 &i2c0 {
     status = "okay";
@@ -69,4 +69,4 @@
         
         inversion-on;
     };
-};;
+};
