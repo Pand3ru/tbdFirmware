@@ -6,26 +6,11 @@ config ZMK_KEYBOARD_NAME
 config ZMK_SPLIT_ROLE_CENTRAL
   default y
 
-# OLED Display 
-config ZMK_DISPLAY
-  default y
-
-config ZMK_WIDGET_LAYER_STATUS
-  default y
-
 #config ZMK_WIDGET_BATTERY_STATUS
 #  default y
 
 #config ZMK_WIDGET_OUTPUT_STATUS
 #  default y
-
-# I2C for OLED
-config I2C
-  default y
-
-# SSD1306 Display Driver
-config SSD1306
-  default y
 
 endif
 
@@ -34,4 +19,11 @@ if SHIELD_ICARUS_LEFT || SHIELD_ICARUS_RIGHT
 config ZMK_SPLIT
   default y
 
+  if ZMK_DISPLAY
+    config I2C
+      default y
+
+    config SSD1306
+      default y
+  endif 
 endif
