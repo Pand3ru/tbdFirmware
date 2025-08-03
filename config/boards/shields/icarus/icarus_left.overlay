@@ -15,12 +15,6 @@
         ;
 };
 
-/ {
-    chosen {
-        zmk,display = &oled;  
-    };
-};
-
 &left_encoder {
     status = "okay";
 };
