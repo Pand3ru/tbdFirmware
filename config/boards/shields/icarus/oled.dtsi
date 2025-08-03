@@ -21,7 +21,7 @@
     };
 };
 
-&i2c1 {
+/* &i2c1 {
     status = "okay";
     compatible = "nordic,nrf-twim";
     pinctrl-0 = <&i2c0_default>;
@@ -42,9 +42,9 @@
         com-sequential;
         prechargep = <0x22>;
     };
-};
+}; */
 
-&i2c0 {
+&i2c1 {
     status = "okay";
     compatible = "nordic,nrf-twim";
     pinctrl-0 = <&i2c0_default>;
