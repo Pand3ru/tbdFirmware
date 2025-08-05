@@ -17,15 +17,13 @@
 &pinctrl {
     i2c0_default: i2c0_default {
         group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 0, 18)>,
-                    <NRF_PSEL(TWIM_SCL, 0, 19)>;
+            psels = <NRF_PSEL(TWIM_SCL, 0, 18)>, <NRF_PSEL(TWIM_SDA, 0, 19)>;
         };
     };
 
     i2c0_sleep: i2c0_sleep {
         group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 0, 18)>,
-                    <NRF_PSEL(TWIM_SCL, 0, 19)>;
+            psels = <NRF_PSEL(TWIM_SCL, 0, 18)>, <NRF_PSEL(TWIM_SDA, 0, 19)>;
             low-power-enable;
         };
     };
@@ -38,7 +36,7 @@
     pinctrl-1 = <&i2c0_sleep>;
     pinctrl-names = "default", "sleep";
     
-    clock-frequency = <100000>;
+    //clock-frequency = <100000>;
 
     oled: ssd1306@3c {
         compatible = "solomon,ssd1306fb";
@@ -54,6 +52,6 @@
         com-sequential;
         prechargep = <0x22>;
         
-        inversion-on;
+     //   inversion-on;
     };
 };
