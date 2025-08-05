@@ -1,4 +1,4 @@
-&i2c0 {
+&pro_micro_i2c {
     compatible = "nordic,nrf-twi";
     status = "okay";
     pinctrl-0 = <&i2c0_default>;
@@ -23,7 +23,7 @@
     };
 };
 
-&pro_micro_i2c {
+&i2c0 {
     status = "okay";
 
     oled: ssd1306@3c {
