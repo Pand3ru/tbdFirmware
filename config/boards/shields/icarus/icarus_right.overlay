@@ -15,10 +15,6 @@
         ;
 };
 
-&i2c0 {
-    status = "disabled";
-};
-
 &right_encoder {
     status = "okay";
 };
